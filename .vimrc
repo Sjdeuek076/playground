@@ -1,48 +1,21 @@
 set nocompatible
-"set t_Co=16
+set t_Co=16
 set runtimepath=~/Vim-R-plugin,~/.vim,$VIMRUNTIME,~/.vim/after
 execute pathogen#infect()
 filetype plugin on
-"filetype indent plugin on
+filetype indent plugin on
 syntax enable
 set number
-set showmatch "DoMatchParen  "highlight matching parenthesis
-set splitbelow
-set splitright
-" set mouse=a
-
-"""""""""""""indent setting"""""""""""""""""""""""
-"filetype plugin indent on
-filetype indent plugin on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
-
-"""""""""""""map function keys for cpp"""""""""""""
-map <F8> :!g++ -g  % && ./a.out <CR>  " compile and run
-map <F5> :!g++ -g % <CR>	      " compile only
-map <F2> :w <CR>   		      " write file	
-map <F12> :!gdb ./a.out <CR>	      " gdb for debugging 	
-
-
-""""""""""""cpp11 as default""""""""""""""""""""""
-au BufNewFile,BufRead *.cpp set syntax=cpp11
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
+set mouse=a
 """"""""""""vim-go setting""""""""""""""""""""""""
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_fmt_command = "goimports"
-let mapleader=","
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 """"""""""""vim-go setting end""""""""""""""""""""""""
+
 " Disable sounds
 "set noeb vb t_vb=
 "au GUIEnter * set vb t_vb=
@@ -51,17 +24,15 @@ if has('autocmd')
      autocmd GUIEnter * set visualbell t_vb=
   endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" powerlines setting
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set  rtp+=/home/adley/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set laststatus=2
-set t_Co=256
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" User interface setings -- GVIM
+" User interface setings
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
+syntax on
+ colorscheme greentheme  "murphy     "Tomorrow 
+
+
  set showmatch                        " Show matching braces when over one
  set ruler                            " Always show current position
  set number                           " Always show line-numbers
@@ -70,7 +41,7 @@ set t_Co=256
  set antialias                        " Pretty fonts
  set t_Co=256                         " 256-color palletes
  set background=dark                  " Dark background variation of theme
- set guifont=Inconsolata\ Medium\ 10  " Monospaced small font
+ set guifont=Andale\ Mono\ 11         " Monospaced small font
  set guioptions-=T                    " TODO
  set guioptions+=c                    " TODO Console messages
  set linespace=0                      " Don't insert any extra pixel lines
@@ -91,7 +62,6 @@ set t_Co=256
  "highlight Pmenu guibg=brown gui=bold
   highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
  let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
-
 "
 " " Statusline
  set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
@@ -114,65 +84,84 @@ set t_Co=256
 " Highlight trailing whitespaces (+ keybindings below)
  highlight ExtraWhitespace ctermbg=red guibg=red
  highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
- ""au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
- ""au InsertLeave * match ExtraWhitespace /\s\+$/.
+ au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+ au InsertLeave * match ExtraWhitespace /\s\+$/.
 
-syntax on
- colorscheme kolor "relaxedgreen "vimbrant distinguished onedark greentheme distinguished  Tomorrow murphy 
+ """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" sample settings for vim-r-plugin and screen.vim
+" Installation 
+"       - Place plugin file under ~/.vim/
+"       - To activate help, type in vim :helptags ~/.vim/doc
+"       - Place the following vim conf lines in .vimrc
+" Usage
+"       - Read intro/help in vim with :h vim-r-plugin or :h screen.txt
+"       - To initialize vim/R session, start screen/tmux, open some *.R file in vim and then hit F2 key
+"       - Object/omni completion command CTRL-X CTRL-O
+"       - To update object list for omni completion, run :RUpdateObjList
+" My favorite Vim/R window arrangement 
+"	tmux attach
+"	Open *.R file in Vim and hit F2 to open R
+"	Go to R pane and create another pane with C-a %
+"	Open second R session in new pane
+"	Go to vim pane and open a new viewport with :split *.R
+" Useful tmux commands
+"       tmux new -s <myname>       start new session with a specific name
+"	tmux ls (C-a-s)            list tmux session
+"       tmux attach -t <id>        attach to specific session  
+"       tmux kill-session -t <id>  kill specific session
+" 	C-a-: kill-session         kill a session
+" 	C-a %                      split pane vertically
+"       C-a "                      split pane horizontally
+" 	C-a-o                      jump cursor to next pane
+"	C-a C-o                    swap panes
+" 	C-a-: resize-pane -L 10    resizes pane by 10 to left (L R U D)
+" Corresponding Vim commands
+" 	:split or :vsplit      split viewport
+" 	C-w-w                  jump cursor to next pane-
+" 	C-w-r                  swap viewports
+" 	C-w C-++               resize viewports to equal split
+" 	C-w 10+                increase size of current pane by value
 
-""""""""""""""""Vundle configure""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" To open R in terminal rather than RGui (only necessary on OS X)
+" let vimrplugin_applescript = 0
+" let vimrplugin_screenplugin = 0
+" For tmux support
+let g:ScreenImpl = 'Tmux'
+let vimrplugin_screenvsplit = 1 " For vertical tmux split
+let g:ScreenShellInitialFocus = 'shell' 
+" instruct to use your own .screenrc file
+let g:vimrplugin_noscreenrc = 1
+" For integration of r-plugin with screen.vim
+let g:vimrplugin_screenplugin = 1
+" Don't use conque shell if installed
+let vimrplugin_conqueplugin = 0
+" map the letter 'r' to send visually selected lines to R 
+let g:vimrplugin_map_r = 1
+" see R documentation in a Vim buffer
+let vimrplugin_vimpager = "no"
+let vimrplugin_applescript =0
+let vimrplugin_screenplugin =0 
+"set expandtab
+set shiftwidth=4
+set tabstop=8
+" start R with F2 key
+map <F2> <Plug>RStart 
+imap <F2> <Plug>RStart
+vmap <F2> <Plug>RStart
+" send selection to R with space bar
+vmap <Space> <Plug>RDSendSelection 
+" send line to R with space bar
+nmap <Space> <Plug>RDSendLine
 
-" set the runtime path to include Vundle and initialize
- set rtp+=~/.vim/bundle/Vundle.vim
- call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-"
-" " let Vundle manage Vundle, required
- Plugin 'gmarik/Vundle.vim'
-"
-" " The following are examples of different formats supported.
-" " Keep Plugin commands between vundle#begin/end.
-" " plugin on GitHub repo
- Plugin 'tpope/vim-fugitive'
-" " plugin from http://vim-scripts.org/vim/scripts.html
-" " Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" " git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" " The sparkup vim script is in a subdirectory of this repo called vim.
-" " Pass the path to set the runtimepath properly.
- Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" " Avoid a name conflict with L9
- Plugin 'fatih/vim-go'
- Plugin 'Valloric/YouCompleteMe'
- Plugin 'scrooloose/nerdtree'
- Plugin 'https://github.com/orderthruchaos/tabmove.vim.git'
- Plugin 'christoomey/vim-tmux-navigator'
-"
-" " All of your Plugins must be added before the following line
- call vundle#end()            " required
- filetype plugin indent on    " required
-" " To ignore plugin indent changes, instead use:
-" "filetype plugin on
-" "
-" " Brief help
-" " :PluginList          - list configured plugins
-" " :PluginInstall(!)    - install (update) plugins
-" " :PluginSearch(!) foo - search (or refresh cache first) for foo
-" " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-" "
-" " see :h vundle for more details or wiki for FAQ
-" " Put your non-Plugin stuff after this line
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-powerline setting
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set t_Co=256
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vim-tmux_navigator key bindings
-let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-nnoremap <silent> {Previoust-Mapping} :TmuxNavigatePrevious<cr>

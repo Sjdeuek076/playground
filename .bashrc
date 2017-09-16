@@ -23,12 +23,12 @@ export EXTRA_NVCCFLAGS="-Xcompiler -std=c++98"
 ####################################################################
 ## powerline setting
 ####################################################################
-#if [ -f `which powerline-daemon` ]; then
-#  powerline-daemon -q
-#  POWERLINE_BASH_CONTINUATION=1
-#  POWERLINE_BASH_SELECT=1
-#  . /usr/share/powerline/bash/powerline.sh
-#fi
+if [ -f `which powerline-daemon` ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/share/powerline/bash/powerline.sh
+fi
 
 #LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/nvidia  #cuda path
 
