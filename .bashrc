@@ -21,6 +21,10 @@ alias myfilters='cd /home/adleyvong/Documents/My_WorkPlace/cpp/myfilters'
 export EXTRA_NVCCFLAGS="-Xcompiler -std=c++98"
 #LIBRARY_PATH =$LIBRARY_PATH:/usr/lib64/nvidia
 ####################################################################
+## show only the current directory
+####################################################################
+export PS1='\u@\h:\W$ '
+####################################################################
 ## powerline setting
 ####################################################################
 if [ -f `which powerline-daemon` ]; then
@@ -30,6 +34,9 @@ if [ -f `which powerline-daemon` ]; then
   . /usr/share/powerline/bash/powerline.sh
 fi
 
+####################################################################
+## CUDA setting
+####################################################################
 #LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/nvidia  #cuda path
 
 #LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/ati-stream/lib/x86_64 //opencl_amd path
@@ -37,3 +44,7 @@ fi
 #export LD_LIBRARY_PATH
 
 #setenv LD_LIBRARY_PATH /usr/lib64/nvidia:${LD_LIBRARY_PATH}
+
+
+
+
