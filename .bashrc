@@ -21,7 +21,7 @@ alias myfilters='cd /home/adleyvong/Documents/My_WorkPlace/cpp/myfilters'
 export EXTRA_NVCCFLAGS="-Xcompiler -std=c++98"
 #LIBRARY_PATH =$LIBRARY_PATH:/usr/lib64/nvidia
 ####################################################################
-## show only the current directory
+## Shorten the current directory path
 ####################################################################
 export PS1='\u@\h:\W$ '
 ####################################################################
