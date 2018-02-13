@@ -85,7 +85,7 @@ syntax on
  highlight ExtraWhitespace ctermbg=red guibg=red
  highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
  au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
- au InsertLeave * match ExtraWhitespace /\s\+$/.
+" au InsertLeave * match ExtraWhitespace /\s\+$/.
 
  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " sample settings for vim-r-plugin and screen.vim
