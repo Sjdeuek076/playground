@@ -30,7 +30,7 @@ highlight Normal guibg=#000000
 
 hi Cursor       guifg=black          guibg=magenta        gui=none
 hi ErrorMsg     guifg=white          guibg=red            gui=none
-hi VertSplit    guifg=#66FF66        guibg=#66FF66        gui=none
+hi VertSplit    guifg=darkgray        guibg=#66FF66        gui=none
 hi Folded       guifg=DarkSlateGray3 guibg=gray40        gui=none
 hi FoldColumn   guifg=tan            guibg=#000000        gui=none
 hi IncSearch    guifg=#b0ffff        guibg=#2050d0
@@ -81,7 +81,7 @@ hi LineNr       ctermfg=3
 hi Question     ctermfg=green
 hi StatusLine   cterm=bold,reverse
 hi StatusLineNC cterm=reverse
-hi VertSplit    cterm=reverse
+hi VertSplit    ctermfg=darkgray
 hi Title        ctermfg=5
 hi Visual       cterm=reverse
 hi VisualNOS    cterm=bold,underline
