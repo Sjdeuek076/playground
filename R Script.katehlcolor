@@ -1,0 +1,26 @@
+[Highlighting R Script - Schema Breeze Dark]
+Alerts:Alert Level 1=28,ffe85848,ffe85848,1,0,0,0,ff451e1a,ff000000,,---
+Alerts:Alert Level 2=28,ffca9219,ffca9219,1,0,0,0,ff451e1a,ff000000,,---
+Alerts:Alert Level 3=28,ff81ca2d,ff81ca2d,1,0,0,0,ff4d1f24,ff000000,,---
+Alerts:Normal Text=0,ffcfcfc2,ffcfcfc2,0,0,0,0,,,,---
+Alerts:Region Marker=25,ff2980b9,ff3daee9,0,0,0,0,ff153042,ff000000,,---
+R Script:Assign=0,ff336366,ffccc099,1,0,0,0,,,,---
+R Script:Comment=21,ff7a7c7d,ff808080,0,0,0,0,,,,---
+R Script:Control Structure=4,fffdbc4b,fffdbc4b,1,0,0,0,,,,---
+R Script:Error=30,ffda4453,ffda4453,0,0,0,1,,,,---
+R Script:Float=19,fff67400,fff67400,0,0,0,0,,,,---
+R Script:Headline=21,ffb00000,ffb00000,1,0,0,0,,,,---
+R Script:Identifier=16,ff2980b9,fffdbc4b,0,0,0,0,,,,---
+R Script:Int=17,fff67400,fff67400,0,0,0,0,,,,---
+R Script:Keyword=1,ff8e44ad,ffcfcfc2,1,0,0,0,,,,---
+R Script:Normal Text=0,ffbabdb6,ffcfcfc2,0,0,0,0,,,,---
+R Script:Operator=5,ffcfcfc2,ffcfcfc2,0,0,0,0,,,,---
+R Script:Reserved Words=29,ff27ae60,ff27ae60,0,0,0,0,,,,---
+R Script:String=12,fff44f4f,fff44f4f,0,0,0,0,,,,---
+R Script:String Char=10,ff3daee9,ff3daee9,0,0,0,0,,,,---
+R Script:Symbol=0,ffcfcfc2,ffcfcfc2,0,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=R Script
+schema=Breeze Dark
